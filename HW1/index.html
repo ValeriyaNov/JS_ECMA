@@ -14,7 +14,7 @@
         <div class="header_box">
             <div class="header_box_title"></div>
             <div class="header_box_text">
-                <p class='ccccccccccccccccccccc'></p>
+                <p class='header_box_text_p'></p>
                 <img src="#" alt="img">
             </div>
             <div class="header_box_img"></div>
@@ -32,8 +32,7 @@
         "use strict";
         //1) Дан массив const arr = [1, 5, 7, 9] с помощью Math.min и spread оператора, найти минимальное число в массиве, решение задание должно состоять из одной строки
         const arr = [10, 5, 7, 9];
-        //console.log('Минимальное значение массива =', Math.min(...arr));
-
+        console.log('Минимальное значение массива =', Math.min(...arr));
 
         //2) Напишите функцию createCounter, которая создает счетчик и возвращает объект с двумя методами: increment и decrement. Метод increment должен увеличивать значение счетчика на 1, а метод decrement должен уменьшать значение счетчика на 1. Значение счетчика должно быть доступно только через методы объекта, а не напрямую.
 
@@ -56,41 +55,31 @@
         numberChange.decrement();
         numberChange.decrement();
         numberChange.increment();
-        //console.log(numberChange.getNumber());
+        console.log(numberChange.getNumber());
 
         //3) Напишите рекурсивную функцию findElementByClass, которая принимает корневой элемент дерева DOM и название класса в качестве аргументов и возвращает первый найденный элемент с указанным классом в этом дереве.
         //Пример
         let rootElement = document.getElementById('001');
-        const classEl = "ccccccccccccccccccccc";
-
-        //const targetElement = findElementByClass(rootElement, classEl);
-        //console.log(targetElement);
-
+        const classEl = "header_box_text";
+        const listEl = [];
+        const targetElement = findElementByClass(rootElement, classEl);
+        console.log(targetElement);
 
         function findElementByClass(rootEl, innerRootElClass) {
 
-            //console.log(rootEl.className === innerRootElClass);
             if (rootEl.classList.contains(innerRootElClass)) {
-                //console.log("Yrra");
-                //console.log(rootEl, 'Rjytw');
-                console.log(rootEl);
-                return rootEl;
+                listEl.push(rootEl);
             }
-            //console.log(rootEl.classList);
-            let arrChildren = rootEl.children;
-            //console.log(arrChildren);
-            for (let index = 0; index < arrChildren.length; index++) {
-                //rootEl = rootEl.children[index];
-                findElementByClass(arrChildren[index], innerRootElClass);
-                //console.log(arrChildren[index]);
-            };
 
-
+            if (rootEl.hasChildNodes()) {
+                const arrChildren = rootEl.children;
+                for (let index = 0; index < arrChildren.length; index++) {
+                    findElementByClass(arrChildren[index], innerRootElClass);
+                };
+            }
+            return listEl[0];
 
         }
-        const targetElement = findElementByClass(rootElement, classEl);
-        console.log(findElementByClass(rootElement, classEl));
-        //findElementByClass(rootElement, classEl);
     </script>
 </body>
 
