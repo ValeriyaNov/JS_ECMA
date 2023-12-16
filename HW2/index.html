@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        "use strict";
+        //1) Задание 1: ""Управление библиотекой книг""
+        // Реализуйте класс Book, представляющий книгу, со следующими свойствами и методами:
+        //     Свойство title(название) - строка, название книги.
+        // Свойство author(автор) - строка, имя автора книги.
+        // Свойство pages(количество страниц) - число, количество страниц в книге.
+        // Метод displayInfo() - выводит информацию о книге(название, автор и количество страниц).
+        class Book {
+
+            constructor(title, author, pages) {
+                this.title = title;
+                this.author = author;
+                this.pages = pages;
+            }
+            displayInfo() {
+                console.log(`Название книги - "${this.title}"; автор - ${this.author}; количество страниц - ${this.pages} `);
+            }
+        }
+        const Book1 = new Book('Анна на шее', 'А.П. Чехов', 125);
+        Book1.displayInfo();
+
+        //Задание 2: ""Управление списком студентов""
+        // Реализуйте класс Student, представляющий студента, со следующими свойствами и методами:
+        //     Свойство name(имя) - строка, имя студента.
+        // Свойство age(возраст) - число, возраст студента.
+        // Свойство grade(класс) - строка, класс, в котором учится студент.
+        // Метод displayInfo() - выводит информацию о студенте(имя, возраст и класс).
+
+        class Student {
+            constructor(name, age, grade) {
+                this.name = name;
+                this.age = age;
+                this.grade = grade;
+            }
+            displayInfo() {
+                console.log(`Name - "${this.name}"; 
+Age - ${this.age}; 
+Grade - ${this.grade} `);
+            }
+        }
+        const student1 = new Student("Виктория", 16, "10 класс");
+        const student2 = new Student("Павел", 12, "5 класс");
+        student1.displayInfo();
+        student2.displayInfo();
+    </script>
+</body>
+
+</html>
