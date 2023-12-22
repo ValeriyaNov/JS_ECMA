@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header id='001' class="header">
+        <div class="header_title"></div>
+        <div class="header_box">
+            <div class="header_box_title"></div>
+            <div class="header_box_text">
+                <p class='header_box_text_p'></p>
+                <img src="#" alt="img">
+            </div>
+            <div class="header_box_img"></div>
+        </div>
+    </header>
+    <main id='002' class="main">
+        <div class="main_box">
+            <div class="main_box_img">
+                <p></p><img src="#" alt="img">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        "use strict";
+        //1) 
+        const url = "https://www.boredapi.com/api/activity/";
+        const btnEl = document.querySelector(".btn"); // btnEl.addEventListener("click", () => { // fetch(url) // .then((response) => response.json()) // .then((json) => { // const data = json; // getActivity(data);
+        // }) // .catch((error) => console.log("Something went wrong")); // }); function getActivity(data) { const divEl = document.createElement("div"); divEl.textContent = data.activity; document.body.appendChild(divEl); } 
+        async function getActiv(url) {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+        btnEl.addEventListener("click", async() => {
+            try {
+                const data = await getActiv(url);
+                console.log(data);
+                getActivity(data);
+            } catch (error) {
+                console.log("Something went wrong");
+            }
+        });
+
+        //2) 
+
+
+        const demoKey = '9neMJZddidZEsm8H2cOxYE1ozufzuigeci0BWCzT';
+
+        const urll = 'https://api.nasa.gov/planetary/apod?api_key=' + demoKey + '&count=10';
+
+
+        async function getData(urll) {
+            const res = await fetch(urll);
+            const data = await res.json();
+            return data;
+        }
+
+        try {
+            const data = await getData(urll);
+            const body = document.querySelector('body');
+            data.forEach(element => {
+                body.insertAdjacentHTML('beforeend', `<figure>
+    <img src="${element.urll}" alt="pic">
+    <figcaption>${element.explanation}</figcaption>
+    </figure>
+    `)
+
+            });
+
+
+            console.log(data);
+        } catch (error) {
+            console.log('no connect')
+        }
+
+        //3) 
+        let rootElement = document.getElementById('001');
+        const classEl = "header_box_text";
+        const listEl = [];
+        const targetElement = findElementByClass(rootElement, classEl);
+        console.log(targetElement);
+    </script>
+</body>
+
+</html>
