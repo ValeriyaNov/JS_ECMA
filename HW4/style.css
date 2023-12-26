@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.user_li {
+    padding-left: 15px;
+    list-style-type: none;
+}
+
+.user_geo {
+    padding-left: 35px;
+    list-style-type: none;
+}
+
+.title {
+    font-family: Lato;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: rgb(145, 0, 145);
+    text-align: center;
+}
+
+.users {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 20px;
+}
+
+.user {
+    border: 1px transparent;
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: rgb(255, 235, 255);
+    margin-top: 20px;
+}
+
+.last {
+    margin-bottom: 5px;
+}
+
+.user_name {
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: rgb(145, 0, 145);
+    display: inline-block;
+}
+
+.other {
+    color: rgb(217, 0, 87);
+    display: inline-block;
+    font-family: Lato;
+    font-size: 24 px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.user_btn {
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid rgb(145, 0, 145);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: rgb(145, 0, 145);
+}
+
+.user_btn:hover {
+    background-color: rgb(217, 0, 87);
+    color: #fff;
+    transition: 1s;
+}

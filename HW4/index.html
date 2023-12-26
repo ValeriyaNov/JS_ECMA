@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="title">Employees</h1>
+    <div class="users">
+
+    </div>
+
+    <script>
+        "use strict ";
+        //Необходимо получить список всех пользователей с помощью бесплатного API (https://jsonplaceholder.typicode.com/users) и отобразить их на странице. Пользователь должен иметь возможность удалить любого пользователя из списка.
+        const url = 'https://jsonplaceholder.typicode.com/users';
+        const usersEl = document.querySelector('.users');
+
+
+        function greatItemCartCard(name, username, emale, phone, website, street, suite, city, zipcode, lat, lng, comname, cath, bs) {
+
+            return `<div class="users">
+        <div class="user">
+            <div class="user_namer">
+                <p class="other user_name">Name:</p>
+                <p class="user_name last">${name}</p>
+            </div>
+
+            <div class="user_username">
+                <p class="other">Userame:</p>
+                <p class="user_name last">${username}</p>
+            </div>
+            <div class="user_emale">
+                <p class="other">E-mail:</p>
+                <p class="user_name last">${emale}</p>
+            </div>
+            <div class="user_adress">
+                <ul class="other">Address:
+                    <li class="user_li">
+                        <p class="other">Street:</p>
+                        <p class="user_name">${street}</p>
+                    </li>
+                    <li class="user_li">
+                        <p class="other">Suite:</p>
+                        <p class="user_name">${suite}</p>
+                    </li>
+                    <li class="user_li">
+                        <p class="other">Sity:</p>
+                        <p class="user_name">${city}</p>
+                    </li>
+                    <li class="user_li">
+                        <p class="other">Zipcode:</p>
+                        <p class="user_name">${zipcode}</p>
+                    </li>
+                    <li class="user_li">
+                        <ul>Geo:</ul>
+                        <li class="user_geo">
+                            <p class="other">Lat:</p>
+                            <p class="user_name">${lat}</p>
+                        </li>
+                        <li class="user_geo last">
+                            <p class="other">Lng:</p>
+                            <p class="user_name last">${lng}</p>
+                        </li>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="user_phone ">
+                <p class="other">Phone:</p>
+                <p class="user_name last">${phone}</p>
+            </div>
+            <div class="user_website">
+                <p class="other">Website:</p>
+                <p class="user_name last">${website}</p>
+            </div>
+            <div class="user_company ">
+                <ul class="other">Company:
+                    <li class="user_li">
+                        <p class="other">Name:</p>
+                        <p class="user_name">${comname}</p>
+                    </li>
+                    <li class="user_li">
+                        <p class="other">CatchPhrase:</p>
+                        <p class="user_name">${cath}</p>
+                    </li>
+                    <li class="user_li last">
+                        <p class="other">bs:</p>
+                        <p class="user_name last">${bs}</p>
+                    </li>
+
+                </ul>
+            </div>
+            <button class="user_btn">Delete</button>
+        </div>`
+        }
+
+        async function greatItem(url) {
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+
+            try {
+                const dataEl = data;
+                dataEl.forEach(elementJS => {
+
+                    usersEl.insertAdjacentHTML('beforeend', greatItemCartCard(elementJS.name, elementJS.username, elementJS.email, elementJS.phone, elementJS.website, elementJS.address.street, elementJS.address.suite, elementJS.address.city, elementJS.address.zipcode, elementJS.address.geo.lat, elementJS.address.geo.lng, elementJS.company.name, elementJS.company.catchPhrase, elementJS.company.bs));
+                    console.log(elementJS.website);
+
+                });
+
+            } catch (error) {
+                console.log("Something went wrong ");
+            }
+
+        };
+        greatItem(url);
+        usersEl.addEventListener('click', function(e) {
+            const elTarget = e.target.closest('.user_btn');
+            const parent1 = elTarget.parentElement;
+            parent1.remove();
+
+        });
+    </script>
+</body>
+
+</html>

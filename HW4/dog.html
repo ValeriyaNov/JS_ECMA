@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dog.css">
+</head>
+
+<body>
+    <h1 class="title">Dogs</h1>
+    <div class="users">
+
+    </div>
+
+    <script>
+        "use strict ";
+        //Необходимо реализовать отрисовку 10 картинок собак из API https://dog.ceo/dog-api/ с интервалом в 3 секунды.
+        let count = 0;
+        const urll = 'https://dog.ceo/api/breeds/image/random';
+        async function dogoUploader() {
+            if (count < 10) {
+                await new Promise((resolve) => {
+                    setTimeout(async() => {
+                        const responce = await fetch(urll);
+                        if (responce.status == '404') {
+                            document.body.insertAdjacentHTML(
+                                'afterbegin',
+                                '<p>Изображения нет</p>'
+                            );
+                        } else {
+                            const dogo = await responce.json();
+                            console.log(dogo.message);
+                            document.body.insertAdjacentHTML(
+                                'afterbegin',
+                                `<img src = "${dogo.message}"/>`
+                            );
+                        }
+                        count++;
+                        dogoUploader();
+                        console.log(dogoCount);
+                        resolve();
+                    }, 3000);
+                });
+            }
+        }
+        dogoUploader();
+    </script>
+</body>
+
+</html>
